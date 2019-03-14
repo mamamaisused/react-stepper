@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.Circle{
+  --circlesize : 80px;
+  --fontsize : 40px;
+  font-family: Cambria;
+  font-size: var(--fontsize);
+  width: var(--circlesize);
+  height: var(--circlesize); 
+  line-height: calc(var(--circlesize));
+  text-align: center;
+  background: rgb(96, 174, 219);
+  text-decoration: none;
+  color: white; 
+  border-radius: 50%;  
+}
+
+.Panel{
+  display: flex;
+}
+
+.Row{
+  margin: 10px;
+}
+
+.Line{
+  --linewidtch:3px;
+  width: 200px;
+  height: var(--linewidtch); 
+  background: rgb(96, 174, 219);
+}
+
+.Nothing{
+  width: 200px;
+  height: 39px;
+}
+
+.TextLine{
+  font-size: 20px;
+}
+
+.box {
+	width: 200px;
+  height: 200px;
+  border-radius: 20px;
+	border: 2px solid black;
+	text-align: center;
+	font-size: 30px;
+	line-height: 60px;
+	font-family: sans-serif;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+
+.box span {
+	display: inline-block;
+	color: blue;
+	transition: 2s;
+}
+
+.box span:nth-child(odd) {
+	transform: translateY(-100%);
+}
+
+.box span:nth-child(even) {
+	transform: translateY(100%);
+}
+
+.box span::before {
+  content: attr(data-text);
+	position: absolute;
+	color: red;
+}
+
+.box div{
+  position: relative;
+	color: rgb(0, 255, 136);
+}
+
+.box span:nth-child(odd)::before {
+	transform: translateY(100%);
+}
+
+.box span:nth-child(even)::before {
+	transform: translateY(-100%);
+}
+
+.box:hover span {
+	transform: translateY(0);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
