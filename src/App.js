@@ -82,15 +82,15 @@ function ShowIcon3(active){
 
 function LinkLines(){
 	return(
-		<div style = {{display:'flex',justifyContent:'center',alignItems: 'center',flexDirection: 'column'}}>
+		<div style = {{color:'white',display:'flex',justifyContent:'center',alignItems: 'center',flexDirection: 'column',backgroundColor :'gray'}}>
           <li>
-            <Link to="/">Step One</Link>
+            <Link to="/" style = {{color:'white'}} >Step One</Link>
           </li>
           <li>
-            <Link to="/2">Step Two</Link>
+            <Link to="/2" style = {{color:'white'}} >Step Two</Link>
           </li>
           <li>
-            <Link to="/3">Step Three</Link>
+            <Link to="/3" style = {{color:'white'}} >Step Three</Link>
           </li>
 		</div>
 	);
@@ -100,7 +100,7 @@ class MyPage extends React.Component {
   render() {
     return (
       <div className="App">
-				<Stepper  steps={ [{title: 'Step One',render: ShowIcon1}, {title: 'Step Two', render: ShowIcon2}, {title: 'Step Three',render: ShowIcon3 }] } titleFontSize = {20}/>
+				<Stepper  steps={ [{title: 'Step One',render: ShowIcon1}, {title: 'Step Two', render: ShowIcon2}, {title: 'Step Three',render: ShowIcon3 }] } titleFontSize = {20} backgroundColor ='gray'/>
 				<LinkLines/>
       </div>
     );
@@ -110,7 +110,7 @@ class MyPage2 extends React.Component {
   render() {
     return (
       <div className="App">
-				<Stepper  steps={ [{title: 'Step One',render: ShowIcon1}, {title: 'Step Two', render: ShowIcon2}, {title: 'Step Three',render: ShowIcon3}] } titleFontSize = {20} activeStep = {1}/>
+				<Stepper  steps={ [{title: 'Step One',render: ShowIcon1}, {title: 'Step Two', render: ShowIcon2}, {title: 'Step Three',render: ShowIcon3}] } titleFontSize = {20} backgroundColor ='gray' activeStep = {1}/>
 				<LinkLines/>
       </div>
     );
@@ -120,7 +120,7 @@ class MyPage3 extends React.Component {
   render() {
     return (
       <div className="App">
-				<Stepper  steps={ [{title: 'Step One',render: ShowIcon1}, {title: 'Step Two', render: ShowIcon2}, {title: 'Step Three',render: ShowIcon3}] } titleFontSize = {20} activeStep = {2}/>
+				<Stepper  steps={ [{title: 'Step One',render: ShowIcon1}, {title: 'Step Two', render: ShowIcon2}, {title: 'Step Three',render: ShowIcon3}] } titleFontSize = {20} backgroundColor ='gray' activeStep = {2}/>
 				<LinkLines/>
       </div>
     );

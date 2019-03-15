@@ -170,7 +170,6 @@ Stepper.defaultProps = {
 		titleFontSize :20,
 		defaultBorderWidth: 10,
 		circleFontSize : 40,
-		backgroundColor:'gray',
 		render:()=>{},
 }
 
