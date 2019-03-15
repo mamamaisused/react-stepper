@@ -17,5 +17,5 @@ function ShowIcon1(active){
 			)}
 }
 
-其余接口可以参考github上https://github.com/mu29/react-stepper的接口
-为了应用的通用性，考虑了接口的兼容
+其余接口可以参考github上https://github.com/mu29/react-stepper
+的接口为了应用的通用性，考虑了接口的兼容
