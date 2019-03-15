@@ -12,11 +12,15 @@ function Stepper(_ref)
 		activeColor = _ref.activeColor,
 		defaultColor = _ref.defaultColor,
 		defaultBorderWidth = _ref.defaultBorderWidth,
-		circleFontSize = _ref.circleFontSize
+		circleFontSize = _ref.circleFontSize,
+		backgroundColor = _ref.backgroundColor,
+		render = _ref.render
 	let Panel = {
 		display: 'flex',
 		justifyContent:'center' ,
 		alignItems: 'flex-start',
+		width:'100%',
+		background: backgroundColor
 	}
 	let linelength = defaultBorderWidth*20;
 	let Nothing = {
@@ -36,9 +40,14 @@ function Stepper(_ref)
 		borderRadius: '3px',
 	}
 	let TextStyle = {
+		width:size,
 		fontSize: titleFontSize,
 		textAlign: 'center',		
-		color: 'gray',
+		overflow:'visible',
+		whiteSpace:'nowrap',
+		display:'flex',
+		justifyContent:'center',
+		color:defaultColor
 	}	
 	let Circle = {
 		fontSize: circleFontSize,
@@ -50,6 +59,10 @@ function Stepper(_ref)
 		textDecoration: "none",
 		color: "white",
 		borderRadius: "50%",
+		display:'flex',
+		justifyContent:'center',
+		alignItems:'center',
+		overflow:'hidden',
 	}
 	let deCircle = {
 		fontSize: circleFontSize,
@@ -59,8 +72,11 @@ function Stepper(_ref)
 		textAlign: "center",
 		background: defaultColor,
 		textDecoration: "none",
-		color: 'gray',
+		color: activeColor,
 		borderRadius: "50%",
+		display:'flex',
+		justifyContent:'center',
+		alignItems:'center',
 	}
 	let Column = {
 		margin: '2px',
@@ -81,13 +97,22 @@ function Stepper(_ref)
 	}
 	function SetLabel(_ref)
 	{
-		let active = _ref.active
+		let active = _ref.active;
+		let contentRender = _ref.imgfunc;
+		//console.log(contentRender)
+		if (contentRender(active) === undefined)
+		{
+			contentRender = (active)=>{return _ref.number}
+		}		
 		return(
 			<div style = {Column}> 
-				<div style = {active?Circle:deCircle}>{_ref.number}</div>
+				<div id = 'circle' style = {active?Circle:deCircle}>{contentRender(active)}</div>
 				<div style = {TextStyle}>{_ref.text}</div>
 			</div>
-		)
+		)		
+	}
+	SetLabel.defaultProps = {
+		imgfunc:(active)=>{}
 	}
 
  let steplength = steps.length;
@@ -98,18 +123,19 @@ function Stepper(_ref)
 			let isactive = ()=>{return index<active+1};	
 			if(index === 0)
 				{
+					//console.log(element.render)
 					return(
-						<div style = {Panel}>
-							<SetLabel number = {index + 1} text = {circletxt} active = {isactive()}/>								
+						<div style = {{display:'flex',alignItems: 'flex-start'}}>
+							<SetLabel number = {index + 1} text = {circletxt} active = {isactive()} imgfunc = {element.render}/>								
 						</div>
 					)
 				}	
 			else
 			{
 				return(
-					<div style = {Panel}>
+					<div style = {{display:'flex',alignItems: 'flex-start'}}>
 						<SetLine active =  {isactive()}/>
-						<SetLabel number = {index + 1} text = {circletxt} active =  {isactive()}/>
+						<SetLabel number = {index + 1} text = {circletxt} active =  {isactive()} imgfunc = {element.render}/>
 					</div>
 				)
 			}
@@ -131,18 +157,21 @@ function boxClick(){
 
 Stepper.propTypes = {
 	size: PropTypes.number,
+	render: PropTypes.func
 }
 
 Stepper.defaultProps = {
 		size : 80,
-		lineWidth: 4,
+		lineWidth: 2,
 		active: 0,
 		activeStep :0,
-		defaultColor:'rgb(175, 180, 184)',
-		activeColor:'rgb(96, 174, 219)',
+		defaultColor:'white',
+		activeColor:'rgb(78, 186, 204)',
 		titleFontSize :20,
 		defaultBorderWidth: 10,
 		circleFontSize : 40,
+		backgroundColor:'gray',
+		render:()=>{},
 }
 
 export default Stepper;
